@@ -1,0 +1,31 @@
+{
+  "passed": true,
+  "cases": 160,
+  "resets": 4,
+  "max_abs_error": {
+    "proprio": 1.9669532775878906e-06,
+    "history": 1.9669532775878906e-06,
+    "command": 1.1920928955078125e-06,
+    "network": 0.0,
+    "action": 1.9669532775878906e-06,
+    "motor_target": 1.9073486328125e-06,
+    "reset_history": 0.0
+  },
+  "limits": {
+    "proprio": 2e-05,
+    "history": 2e-05,
+    "command": 2e-05,
+    "network": 0.0,
+    "action": 0.0002,
+    "motor_target": 0.0002,
+    "reset_history": 0.0
+  },
+  "config_checks": {
+    "canonical_pelvis_com": true,
+    "native_rgmt_action_offset_and_anchor": true,
+    "native_pd_default": true
+  },
+  "checkpoint_sha256": "38e8070882d9e397a4850a7b76337fb9260155f6dcc1887759db070f2c014f12",
+  "source_commit": "1a92390077d329d22cbcdbf89c4a5c982003fbc8",
+  "scope": "Original PMT proprio/command/transformer/residual offset and Isaac Lab circular history; simulator and registry glue omitted."
+}

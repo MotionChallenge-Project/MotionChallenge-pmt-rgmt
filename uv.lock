@@ -131,7 +131,7 @@ requires-dist = [
 ]
 
 [[package]]
-name = "motion-challenge-pmt-flat"
+name = "motion-challenge-pmt-rgmt"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [

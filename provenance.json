@@ -1,46 +1,23 @@
 {
-  "model": "pmt-flat",
-  "display_name": "PMT Flat \u00b7 iteration 19999",
+  "model": "pmt-rgmt",
+  "display_name": "PMT RGMT Transformer 20k",
   "submitter": "Motion Challenge",
   "submission_type": "maintainer adaptation, not author submission",
   "upstream": "https://github.com/Mondo-Robotics/PMT",
   "source_commit": "1a92390077d329d22cbcdbf89c4a5c982003fbc8",
-  "checkpoint_sha256": "dce21ee052099c49b847e04a4bfe5aa4baea94bc8992b72e5f30d2b67f13dd26",
-  "author_inference_review": "Maintainer native-source parity passed; not an author endorsement",
+  "checkpoint_sha256": "38e8070882d9e397a4850a7b76337fb9260155f6dcc1887759db070f2c014f12",
+  "author_inference_review": "Native-source parity passed: 160 cases, 4 resets, proprioception, circular history, torso-frame reference window, transformer and residual motor targets.",
   "notes": "Original 286D PyTorch ActorCritic,512/256/128 ELU; normalizer epsilon0.01 from native class (mjlab demo differs). No action clipping. State body transforms relative to actual torso; actual root COM linear velocity and angular velocity in pelvis link frame; convert packet link-origin velocity with the canonical pelvis COM offset. Current reference at control time. Canonical benchmark physics, not IsaacLab training physics.",
-  "inference_validation": {
-    "cases": 160,
-    "resets": 4,
-    "max_abs_error": {
-      "observation": 5.91278076171875e-05,
-      "normalized": 0.0001220703125,
-      "network": 0.0,
-      "action": 5.91278076171875e-05,
-      "motor_target": 2.574920654296875e-05,
-      "reset_history": 0.0
-    },
-    "limits": {
-      "observation": 0.0002,
-      "normalized": 0.002,
-      "network": 1e-06,
-      "action": 0.0002,
-      "motor_target": 0.0002,
-      "reset_history": 0.0
-    },
-    "config_checks": {
-      "native_pd_default_action_scale": true,
-      "canonical_pelvis_com": true
-    }
-  },
   "checkpoint_origin": {
     "author_release_url": "https://github.com/Mondo-Robotics/PMT/blob/1a92390077d329d22cbcdbf89c4a5c982003fbc8/README.md",
     "author_release_label": "Mondo-Robotics/PMT",
     "kind": "author_file",
     "kind_label": "Author-released checkpoint",
-    "artifact_page_url": "https://huggingface.co/datasets/aCodeDog/PMT-assets/blob/38f9f7dba893385c6219620b72314396247c9e82/checkpoints/pretrained/multimotionv2_flat.pt",
-    "original_filename": "multimotionv2_flat.pt",
+    "artifact_page_url": "https://huggingface.co/datasets/aCodeDog/PMT-assets/blob/38f9f7dba893385c6219620b72314396247c9e82/checkpoints/pretrained/rgmt_flat.pt",
+    "original_filename": "rgmt_flat.pt",
     "verification": "The adapter pins this published artifact by SHA256. Artifact identity is separate from inference parity.",
-    "download_url": "https://huggingface.co/datasets/aCodeDog/PMT-assets/resolve/38f9f7dba893385c6219620b72314396247c9e82/checkpoints/pretrained/multimotionv2_flat.pt",
-    "sha256": "dce21ee052099c49b847e04a4bfe5aa4baea94bc8992b72e5f30d2b67f13dd26"
-  }
+    "download_url": "https://huggingface.co/datasets/aCodeDog/PMT-assets/resolve/38f9f7dba893385c6219620b72314396247c9e82/checkpoints/pretrained/rgmt_flat.pt",
+    "sha256": "38e8070882d9e397a4850a7b76337fb9260155f6dcc1887759db070f2c014f12"
+  },
+  "inference_validation": "validation/native-parity.json"
 }

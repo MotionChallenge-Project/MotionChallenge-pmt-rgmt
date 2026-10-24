@@ -1,6 +1,6 @@
 {
   "id": "pmt-rgmt-g1-v1",
-  "entrypoint": "adapter:create",
+  "entrypoint": "restricted:create",
   "control_period_s": 0.02,
   "reference_offsets_s": [
     -0.2,
@@ -27,7 +27,7 @@
   ],
   "reference_history_s": 0.2,
   "reference_preview_s": 0.2,
-  "state_access": "privileged-state-v0",
+  "state_access": "ideal-proprioceptive-no-position-v1",
   "action_mode": "joint-pd-feedforward",
   "weights": "checkpoints/rgmt_flat.pt",
   "weights_url": "https://huggingface.co/datasets/aCodeDog/PMT-assets/resolve/38f9f7dba893385c6219620b72314396247c9e82/checkpoints/pretrained/rgmt_flat.pt",
@@ -60,12 +60,8 @@
     9,
     10
   ],
-  "default_track": "ideal-proprioception",
-  "observation_tracks": {
-    "ideal-proprioception": {
-      "entrypoint": "restricted:create",
-      "admission_record": "admission.json",
-      "admission_sha256": "e909a5058aca108499a63e0cb9dc00426f8d726608c95a48ad825f90a77de554"
-    }
+  "observation_contract": {
+    "admission_record": "admission.json",
+    "admission_sha256": "e909a5058aca108499a63e0cb9dc00426f8d726608c95a48ad825f90a77de554"
   }
 }

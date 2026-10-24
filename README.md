@@ -22,8 +22,6 @@ outside Git.
 This repository adapts model inference. The pinned root `MotionChallenge-Core`
 submodule owns datasets, physics, metrics and verification. See `--help` for options.
 
-## Observation track
+## Observations
 
-Default: **ideal proprioception, no global position feedback**. [Admission and special handling](admission.json) · [Rules](MotionChallenge-Core/docs/OBSERVATIONS.md).
-
-For the original privileged-state track: `uv run evaluate.py --track privileged`.
+Ideal proprioception, without robot world-position or contact feedback. [Checkpoint requirements](admission.json) · [Rules](MotionChallenge-Core/docs/OBSERVATIONS.md).

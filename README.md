@@ -19,5 +19,5 @@ Missing data and weights are downloaded and hash-checked. Cached files can be
 selected with `--weights PATH --data PATH --offline`. Results and traces stay
 outside Git.
 
-This repository adapts model inference. The pinned root `motion-challenge`
+This repository adapts model inference. The pinned root `MotionChallenge-Core`
 submodule owns datasets, physics, metrics and verification. See `--help` for options.

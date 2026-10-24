@@ -51,7 +51,7 @@ def validate_control_config(source, root, adapter, pinned):
     for actual,expected in [(adapter.default,defaults),
                             (adapter.kp,kps),(adapter.kd,kds)]:
         np.testing.assert_allclose(actual,expected,rtol=1e-7,atol=1e-7)
-    xml=root/'motion-challenge/robots/g1-29dof-cpu-v0.xml'
+    xml=root/'MotionChallenge-Core/robots/g1-29dof-cpu-v0.xml'
     assert hashlib.sha256(xml.read_bytes()).hexdigest()==pinned['canonical_robot_xml_sha256']
     pelvis=ET.parse(xml).find('.//body[@name="pelvis"]/inertial')
     np.testing.assert_array_equal(adapter.cfg['canonical_root_com_offset_m'],

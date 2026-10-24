@@ -6,7 +6,7 @@
   "upstream": "https://github.com/Mondo-Robotics/PMT",
   "source_commit": "1a92390077d329d22cbcdbf89c4a5c982003fbc8",
   "checkpoint_sha256": "38e8070882d9e397a4850a7b76337fb9260155f6dcc1887759db070f2c014f12",
-  "author_inference_review": "Native-source parity passed: 160 cases, 4 resets, proprioception, circular history, torso-frame reference window, transformer and residual motor targets.",
+  "author_inference_review": "Numerical comparison against pinned author inference: validation/native-parity.json",
   "notes": "Original 286D PyTorch ActorCritic,512/256/128 ELU; normalizer epsilon0.01 from native class (mjlab demo differs). No action clipping. State body transforms relative to actual torso; actual root COM linear velocity and angular velocity in pelvis link frame; convert packet link-origin velocity with the canonical pelvis COM offset. Current reference at control time. Canonical benchmark physics, not IsaacLab training physics.",
   "checkpoint_origin": {
     "author_release_url": "https://github.com/Mondo-Robotics/PMT/blob/1a92390077d329d22cbcdbf89c4a5c982003fbc8/README.md",

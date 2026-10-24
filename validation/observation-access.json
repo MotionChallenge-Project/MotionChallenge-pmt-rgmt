@@ -1,0 +1,23 @@
+{
+  "model": "pmt-rgmt",
+  "status": "passed",
+  "cases": 160,
+  "resets": 4,
+  "tolerance_abs": 2e-05,
+  "checkpoint_sha256": "38e8070882d9e397a4850a7b76337fb9260155f6dcc1887759db070f2c014f12",
+  "network_calls": 160,
+  "max_abs_error": {
+    "observation": 0.0,
+    "network_output": 0.0,
+    "motor_command": 0.0
+  },
+  "checks": [
+    "160 matched state sequences / 4 resets",
+    "large actual translation perturbations",
+    "reference windows preserved including endpoints",
+    "all captured ONNX inputs and outputs",
+    "all PD command fields",
+    "forbidden-field counterfactual before transport"
+  ],
+  "limits": "Finite numerical regression plus source audit; not a proof against malicious code or implicit neural odometry."
+}

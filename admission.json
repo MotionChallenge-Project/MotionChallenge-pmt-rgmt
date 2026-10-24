@@ -1,0 +1,50 @@
+{
+  "schema": "MotionChallenge/observation-admission-v1",
+  "model": "pmt-rgmt",
+  "display_name": "PMT RGMT Transformer 20k",
+  "state_access": "ideal-proprioceptive-no-position-v1",
+  "status": "inference_verified",
+  "checkpoint_sha256": "38e8070882d9e397a4850a7b76337fb9260155f6dcc1887759db070f2c014f12",
+  "auxiliary_artifacts": {},
+  "checkpoint_origin": {
+    "author_release_url": "https://github.com/Mondo-Robotics/PMT/blob/1a92390077d329d22cbcdbf89c4a5c982003fbc8/README.md",
+    "author_release_label": "Mondo-Robotics/PMT",
+    "kind": "author_file",
+    "kind_label": "Author-released checkpoint",
+    "artifact_page_url": "https://huggingface.co/datasets/aCodeDog/PMT-assets/blob/38f9f7dba893385c6219620b72314396247c9e82/checkpoints/pretrained/rgmt_flat.pt",
+    "original_filename": "rgmt_flat.pt",
+    "verification": "The adapter pins this published artifact by SHA256. Artifact identity is separate from inference parity.",
+    "download_url": "https://huggingface.co/datasets/aCodeDog/PMT-assets/resolve/38f9f7dba893385c6219620b72314396247c9e82/checkpoints/pretrained/rgmt_flat.pt",
+    "sha256": "38e8070882d9e397a4850a7b76337fb9260155f6dcc1887759db070f2c014f12"
+  },
+  "author_source": "https://github.com/Mondo-Robotics/PMT",
+  "author_commit": "1a92390077d329d22cbcdbf89c4a5c982003fbc8",
+  "base_adapter_commit": "6cdf73feb4626eb575b74f79c895216938f20a75",
+  "production_source_sha256": {
+    "adapter.py": "be5c63296aff4c502fa5a89f42ea1dba526a110521b12a035e6ba9756c3c272e",
+    "evaluate.py": "eacb83b1da8b667147244456b55f816f9f9edbf1d400d871b72cc2b71a8e6eb1",
+    "native-sources.json": "b978fa540e6ec160c4ee24557d8610e9a6f1ff3273ad428b531a34d4b9098349",
+    "network.py": "910cc8425cafb942ea4f35620f2d130ec5bb159ac6fbfb6f84c5f9c6305cf011",
+    "policy.json": "597a70bc7378e3556b08c7263661ef1040a1972b0be9e3b379eab4ca6133bbe6",
+    "validate_inference.py": "d150d70ef4c30d354bbff4b87898b5d1aed706936bbd3e8b3f4b7548f41e01ce",
+    "validation/native_config.py": "68df973687a6051daec4dd97f5a2781296697c2dc6a0ebf4fc6d88e8e31982ff"
+  },
+  "prior_native_parity_sha256": {
+    "validation/native-parity.json": "f7d1f6dead5c7c88a5ec0c8ed0236d2c6e8e29f3041f6474022938b1afbc096f"
+  },
+  "handling": "Released actor uses joint state, angular velocity/gravity or orientation and reference features. Retain author normalization, history/recurrent state, action processing and declared lookahead; validate numerical independence from actual translation.",
+  "actual_position_integration": "No explicit integration or odometry in the inspected deployed adapter source; blocked paths are listed separately.",
+  "special_handling": "FK of allowed state at fixed synthetic origin (0,0,0); never actual measured origin.",
+  "new_evaluation": {
+    "status": "queued",
+    "inherited_scores": false
+  },
+  "repository": "https://github.com/MotionChallenge-Project/MotionChallenge-pmt-rgmt",
+  "dependency_test": {
+    "path": "validation/observation-access.json",
+    "sha256": "d17414c4cea119648ab41d0426426b0ede2d72d3372629130c530ef9ec7bde64",
+    "code": "validate_observations.py",
+    "cases": 160,
+    "resets": 4
+  }
+}

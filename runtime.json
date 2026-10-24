@@ -59,5 +59,13 @@
     8,
     9,
     10
-  ]
+  ],
+  "default_track": "ideal-proprioception",
+  "observation_tracks": {
+    "ideal-proprioception": {
+      "entrypoint": "restricted:create",
+      "admission_record": "admission.json",
+      "admission_sha256": "e909a5058aca108499a63e0cb9dc00426f8d726608c95a48ad825f90a77de554"
+    }
+  }
 }

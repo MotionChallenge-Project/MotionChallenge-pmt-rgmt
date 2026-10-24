@@ -2,7 +2,7 @@
   "model": "pmt-rgmt",
   "display_name": "PMT RGMT Transformer 20k",
   "submitter": "MotionChallenge",
-  "submission_type": "maintainer adaptation, not author submission",
+  "submission_type": "MotionChallenge reproduction",
   "upstream": "https://github.com/Mondo-Robotics/PMT",
   "source_commit": "1a92390077d329d22cbcdbf89c4a5c982003fbc8",
   "checkpoint_sha256": "38e8070882d9e397a4850a7b76337fb9260155f6dcc1887759db070f2c014f12",

@@ -1,0 +1,120 @@
+{
+  "schema": "MotionChallenge/inference-concurrency-v1",
+  "core": "da0aec4023bbc3d29be67e1fce9fa9ab8a48c4b5",
+  "inference": {
+    "model": "pmt-rgmt",
+    "scope": "40 real LAFAN initial states, six advancing reference steps, two independent resets, reordered slots, partial reset; exact original frozen inference comparison",
+    "baseline_adapter": "https://github.com/MotionChallenge-Project/MotionChallenge-pmt-rgmt/tree/b591bce93ec630a1e74347fe3729b9877ca39e47",
+    "candidate_source_sha256": {
+      "adapter.py": "be5c63296aff4c502fa5a89f42ea1dba526a110521b12a035e6ba9756c3c272e",
+      "parallel.py": "24f5d3b68572d209c8570f8e346ad63b158aac17a86950aebf49c397d2d234fc",
+      "validate_observations.py": "86c951c8756a7a1b0bdb7ba8ef17ab8d070210883d0235fc4c5fba801a38ae32",
+      "evaluate.py": "eacb83b1da8b667147244456b55f816f9f9edbf1d400d871b72cc2b71a8e6eb1",
+      "validate_inference.py": "d150d70ef4c30d354bbff4b87898b5d1aed706936bbd3e8b3f4b7548f41e01ce",
+      "network.py": "910cc8425cafb942ea4f35620f2d130ec5bb159ac6fbfb6f84c5f9c6305cf011",
+      "restricted.py": "8f8fdcc4dc41813cf5d8f8c55e4b219310145f74a540457b52c41843a49bd831"
+    },
+    "checkpoint_sha256": "38e8070882d9e397a4850a7b76337fb9260155f6dcc1887759db070f2c014f12",
+    "records": [
+      {
+        "workers": 1,
+        "exact": true,
+        "max_abs_delta": 0.0,
+        "seconds_240_calls": [
+          0.5837250649929047,
+          0.543319646269083
+        ],
+        "median_40_calls_s": 0.09392039260516565
+      },
+      {
+        "workers": 2,
+        "exact": true,
+        "max_abs_delta": 0.0,
+        "seconds_240_calls": [
+          0.4211931526660919,
+          0.4156699366867542
+        ],
+        "median_40_calls_s": 0.06973859077940385
+      },
+      {
+        "workers": 4,
+        "exact": true,
+        "max_abs_delta": 0.0,
+        "seconds_240_calls": [
+          0.5023387186229229,
+          0.5003185048699379
+        ],
+        "median_40_calls_s": 0.08355476862440507
+      },
+      {
+        "workers": 8,
+        "exact": true,
+        "max_abs_delta": 0.0,
+        "seconds_240_calls": [
+          0.5285681933164597,
+          0.5318136215209961
+        ],
+        "median_40_calls_s": 0.08836515123645465
+      },
+      {
+        "workers": 16,
+        "exact": true,
+        "max_abs_delta": 0.0,
+        "seconds_240_calls": [
+          0.5394816249608994,
+          0.5650214999914169
+        ],
+        "median_40_calls_s": 0.0920419270793597
+      },
+      {
+        "workers": 32,
+        "exact": true,
+        "max_abs_delta": 0.0,
+        "seconds_240_calls": [
+          0.612558726221323,
+          0.634840339422226
+        ],
+        "median_40_calls_s": 0.10394992213696241
+      }
+    ],
+    "partial_reset_exact": true,
+    "passed": true,
+    "selected_workers": 1,
+    "selected_speedup": 1.0,
+    "microbenchmark_selected_workers": 2,
+    "selection_reason": "Two workers did not improve the closed-loop steady policy stage (18.61s serial vs19.06s parallel). Retain serial inference within the batched interface."
+  },
+  "closed_loop": {
+    "model": "pmt-rgmt",
+    "passed": true,
+    "scope": "all40 clips, first2 seconds, physics feedback, exact pose and metric comparison against frozen formal source",
+    "pose_samples": 4000,
+    "seconds": {
+      "baseline": 27.986186545342207,
+      "candidate": 27.054357316344976
+    },
+    "speedup": 1.0344428521476747,
+    "workers": 1,
+    "physical_cpus": "48,50,52,54,56,58,60,62",
+    "effective_scalar_workers": 1,
+    "baseline_result_sha256": "e3c691196505e448578a1f1717c9ea1de64aeda2fd0d385239c6b6e0132b6aae",
+    "candidate_result_sha256": "03c26ed18539b7823f63ca143df73049fe6e7eb28e096701799d764ae5642474",
+    "rejected_concurrent_setting": {
+      "model": "pmt-rgmt",
+      "passed": true,
+      "scope": "all40 clips, first2 seconds, physics feedback, exact pose and metric comparison against frozen formal source",
+      "pose_samples": 4000,
+      "seconds": {
+        "baseline": 27.986186545342207,
+        "candidate": 29.578310508280993
+      },
+      "speedup": 0.946172586074751,
+      "workers": 2,
+      "physical_cpus": "48,50,52,54,56,58,60,62",
+      "effective_scalar_workers": 2,
+      "baseline_result_sha256": "e3c691196505e448578a1f1717c9ea1de64aeda2fd0d385239c6b6e0132b6aae",
+      "candidate_result_sha256": "0248a8362c75191890350a78116802ac1173774953321f39dfc2ab7e6f040de3"
+    },
+    "selection_reason": "Two workers did not improve steady closed-loop policy time. Keep serial calls within the batch interface."
+  }
+}

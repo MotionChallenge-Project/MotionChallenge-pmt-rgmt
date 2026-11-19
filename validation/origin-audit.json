@@ -1,0 +1,30 @@
+{
+  "status": "verified_author_release",
+  "eligible_for_official_leaderboard": true,
+  "author_repository": "https://github.com/Mondo-Robotics/PMT",
+  "original_files": [
+    {
+      "url": "https://huggingface.co/datasets/aCodeDog/PMT-assets/resolve/38f9f7dba893385c6219620b72314396247c9e82/checkpoints/pretrained/rgmt_flat.pt",
+      "sha256": "38e8070882d9e397a4850a7b76337fb9260155f6dcc1887759db070f2c014f12",
+      "bytes": 12801983,
+      "role": "author_original"
+    }
+  ],
+  "official_release_evidence": [
+    {
+      "url": "https://github.com/Mondo-Robotics/PMT/blob/1a92390077d329d22cbcdbf89c4a5c982003fbc8/README.md",
+      "evidence": "Author README lists rgmt_flat.pt and recommends the aCodeDog/PMT-assets mirror."
+    },
+    {
+      "url": "https://raw.githubusercontent.com/Mondo-Robotics/PMT/1a92390077d329d22cbcdbf89c4a5c982003fbc8/checkpoints/pretrained/rgmt_flat.pt",
+      "evidence": "Author Git LFS pointer SHA256 exactly matches the evaluated original checkpoint."
+    }
+  ],
+  "conversion_only": true,
+  "runtime_sha256_unchanged": "f799d13c6f2ecd7a90a601b55d08391f5ca6396e698e02359b0bde4d6f8273d9",
+  "inference_evidence": [
+    "validation/mjwarp-network-parity.json",
+    "validation/tensor-observation-parity.json",
+    "validation/full-batch-capacity.json"
+  ]
+}

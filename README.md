@@ -1,27 +1,50 @@
-# PMT RGMT Transformer 20k
+# PMT RGMT
 
-[Author project](https://github.com/Mondo-Robotics/PMT) · [Checkpoint](https://huggingface.co/datasets/aCodeDog/PMT-assets/blob/38f9f7dba893385c6219620b72314396247c9e82/checkpoints/pretrained/rgmt_flat.pt) · [Provenance](provenance.json)
+[Author repository](https://github.com/Mondo-Robotics/PMT) · [Checkpoint provenance](provenance.json) · [Strict observation contract](admission.mjwarp.json)
 
-## Install and run
+## Install
 
 ```bash
 git clone --recurse-submodules https://github.com/MotionChallenge-Project/MotionChallenge-pmt-rgmt.git
 cd MotionChallenge-pmt-rgmt
-uv sync
-uv run evaluate.py
+uv sync --locked
 ```
 
-One full rollout per motion produces success, completion and all six MPBPE values
-in one verified `result.json`. Tuned inference defaults; CPU slots scale with
-available cores. `--jobs N` overrides the slots. Progress updates every five seconds.
+Python 3.12 and an NVIDIA GPU are required. The repository pins Core, Python dependencies, source checkpoints, and auxiliary artifacts. Weights are converted locally to safetensors and executed as one PyTorch batch on the selected GPU.
 
-Missing data and weights are downloaded and hash-checked. Cached files can be
-selected with `--weights PATH --data PATH --offline`. Results and traces stay
-outside Git.
+## Evaluate
 
-This repository adapts model inference. The pinned root `MotionChallenge-Core`
-submodule owns datasets, physics, metrics and verification. See `--help` for options.
+Download the original G1 LAFAN or BONES-SEED motions from the author. Pass the motion directory, or the original SEED `g1.tar.gz` archive:
 
-## Observations
+```bash
+uv run evaluate.py --dataset lafan --data /path/to/lafan --device cuda:0 --output runs/lafan
+uv run evaluate.py --dataset seed --data /path/to/g1.tar.gz --device cuda:0 --output runs/seed
+```
 
-Ideal proprioception, without robot world-position or contact feedback. [Checkpoint requirements](admission.json) · [Rules](https://github.com/MotionChallenge-Project/MotionChallenge-Core/blob/da0aec4023bbc3d29be67e1fce9fa9ab8a48c4b5/docs/OBSERVATIONS.md).
+The command downloads and checks model artifacts, converts weights, prepares reference poses, evaluates all motions, and independently recomputes scores from saved traces. Core applies the public SEED inclusion list. Users maintain their local motion files.
+
+For local LeRobot v3 motions, add `--data-format lerobot-v3`. For downloaded model files, use `--weights /path/to/original-checkpoint`; auxiliary files use `--artifact NAME=/path/to/file`. `--offline` uses only supplied or cached artifacts. `--cache` selects the working cache.
+
+Batch size is the number of motions, capped at 4096. All active slots execute in one forward call; longest motions are scheduled first and completed slots are refilled. Use `--slots` to select an explicit capacity. The control interval is 20 ms with four 5 ms MuJoCo Warp steps, contact friction 1.0, Newton 50 iterations and 20 line-search iterations.
+
+## Model artifacts
+
+The source is `rgmt_flat.pt`. The converter loads the released actor state dictionary and writes safetensors. The actor consumes 93 current proprioceptive features, ten history frames and a 21-frame motion command; linear-velocity and anchor-position estimators are disabled.
+
+[Author checkpoint provenance](validation/checkpoint-origin.json) records the official release, original artifact hashes and conversion scope.
+
+## Observations and verification
+
+The policy receives joint positions and velocities, root orientation and angular velocity. Actual global position and linear velocity are excluded from every observation and history frame. Motion references contain root and joint information; this adapter computes its own reference body features. Core precomputes reference FK before rollout and reads actual body poses from the simulator for scoring.
+
+- [Network conversion parity](validation/mjwarp-network-parity.json)
+- [Observation, history and reset parity](validation/tensor-observation-parity.json)
+- [Full 4096-slot inference](validation/full-batch-capacity.json)
+
+`validate_tensor.py --prepared PATH --weights CONVERTED --device cuda:0` reproduces the observation check. `validate_full_batch.py --prepared PATH --weights CONVERTED --device cuda:0` uses the prepared motions and converted weights and validates full-batch execution against seven independently initialized slots. The one-command evaluator writes `result.json`, traces and an independent verification report under `--output`.
+
+[Current validation summary](VALIDATION.md) links the conversion, full-batch, complete dataset and independent-cache evidence.
+
+## License
+
+Adapter: [Apache-2.0](LICENSE). [Upstream notices and licenses](THIRD_PARTY_NOTICES.md). Checkpoint and dataset terms are specified by their authors.

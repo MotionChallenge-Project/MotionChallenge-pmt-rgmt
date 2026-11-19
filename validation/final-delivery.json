@@ -1,0 +1,17 @@
+{
+  "model": "pmt-rgmt",
+  "status": "passed",
+  "errors": [],
+  "core_commit": "2221fab60a90adc3c85b1dfd438e00244fb58263",
+  "runtime_sha256": "f799d13c6f2ecd7a90a601b55d08391f5ca6396e698e02359b0bde4d6f8273d9",
+  "locked_environment_and_cli": true,
+  "own_core_import": "/mnt/volumes/nexus-train-bd-ga/swd/motionchallenge-mjwarp/MotionChallenge-pmt-rgmt/MotionChallenge-Core/src/motion_challenge/__init__.py",
+  "admission_and_source_hashes": true,
+  "modules": [
+    "convert_tensor",
+    "convert_weights",
+    "evaluate",
+    "network",
+    "tensor_adapter"
+  ]
+}

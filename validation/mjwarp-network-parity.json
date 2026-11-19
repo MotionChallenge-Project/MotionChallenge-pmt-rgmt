@@ -1,0 +1,49 @@
+{
+  "status": "passed",
+  "source_sha256": "38e8070882d9e397a4850a7b76337fb9260155f6dcc1887759db070f2c014f12",
+  "weights_sha256": "21cb6aea9e471f2d799ffa7118c53647ac1208d3387d7e524a68eeacf20d2667",
+  "reference": "released checkpoint actor evaluated independently per sample on CPU",
+  "cases": [
+    {
+      "batch": 1,
+      "device": "cpu",
+      "max_abs_error": 0.0
+    },
+    {
+      "batch": 1,
+      "device": "cuda:3",
+      "max_abs_error": 7.748603820800781e-07
+    },
+    {
+      "batch": 7,
+      "device": "cpu",
+      "max_abs_error": 1.9073486328125e-06
+    },
+    {
+      "batch": 7,
+      "device": "cuda:3",
+      "max_abs_error": 2.682209014892578e-06
+    },
+    {
+      "batch": 40,
+      "device": "cpu",
+      "max_abs_error": 2.86102294921875e-06
+    },
+    {
+      "batch": 40,
+      "device": "cuda:3",
+      "max_abs_error": 1.9073486328125e-06
+    },
+    {
+      "batch": 256,
+      "device": "cpu",
+      "max_abs_error": 2.86102294921875e-06
+    },
+    {
+      "batch": 256,
+      "device": "cuda:3",
+      "max_abs_error": 4.291534423828125e-06
+    }
+  ],
+  "max_abs_error": 4.291534423828125e-06
+}
